@@ -1,5 +1,7 @@
-E-mail com Workers
+# Docker E-mail com Workers
+
 Aplicação envia e-mails com frontend Nginx com página HTML simples, backend em python enfileirar os requests para envio e salva as mensagens em um banco de dados postgres.
+
 1. Criado banco de dados em postgres
 2. Efetuado mapeamento dos arquivos locais para os serviços.
 3. Criado app para enfileirar os e-mails
@@ -16,23 +18,23 @@ Premissa: ter docker instalado.
 
 1. Executar docker em modo deamon '-d' e '--scale nome_serviço quantidade_serviços' nome_serviço referente ao criado no docker_compose.yml
 
-'''docker compose up -d --scale worker=3'''
+``` docker compose up -d --scale worker=3 ```
 
 2. Executar para testar o banco 
 
-'''docker compose exec db psql -U postgres -f /scripts/check.sql'''
+``` docker compose exec db psql -U postgres -f /scripts/check.sql ```
 
 
 
 
 Verificar a execução de todos os serviços.
 
-'''docker compose logs -f -t'''
+``` docker compose logs -f -t ```
 
 Verificar o banco de dados com as mensagens salvar
 
-'''docker compose exec db psql -U postgres -d email_sender -c 'select * from emails' '''
+``` docker compose exec db psql -U postgres -d email_sender -c 'select * from emails' ```
 
 Encerrar a execução dos serviços.
 
-'''docker compose down'''
+``` docker compose down ```
