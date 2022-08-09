@@ -13,19 +13,26 @@ Aplicação envia e-mails com frontend Nginx com página HTML simples, backend e
 
 Execução da Aplicação:
 Premissa: ter docker instalado.
+
 1. Executar docker em modo deamon '-d' e '--scale nome_serviço quantidade_serviços' nome_serviço referente ao criado no docker_compose.yml
+
 '''docker compose up -d --scale worker=3'''
+
 2. Executar para testar o banco 
+
 '''docker compose exec db psql -U postgres -f /scripts/check.sql'''
 
 
 
 
 Verificar a execução de todos os serviços.
+
 '''docker compose logs -f -t'''
 
 Verificar o banco de dados com as mensagens salvar
+
 '''docker compose exec db psql -U postgres -d email_sender -c 'select * from emails' '''
 
 Encerrar a execução dos serviços.
+
 '''docker compose down'''
